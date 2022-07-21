@@ -1,15 +1,24 @@
 import {
   GET_DELIVERY_METHODS,
   GET_DELIVERY_METHODS_FAILED,
+  SET_DELIVERY_FORM_VALUE,
   SET_DELIVERY_METHOD,
-  GET_DELIVERY_METHODS_SUCCESS
+  GET_DELIVERY_METHODS_SUCCESS,
 } from '../actions/delivery';
 
 const deliveryInitialState = {
   deliveryMethods: [],
   deliveryMethodsRequest: false,
   deliveryMethodsFailed: false,
-  selectedDeliveryId: null
+  selectedDeliveryId: null,
+  deliveryForm: {
+    name: '',
+    phone: '',
+    address: '',
+    unitNumber: '',
+    intercom: '',
+    floor: ''
+  }
 };
 export const deliveryReducer = (state = deliveryInitialState, action) => {
   switch (action.type) {
@@ -42,6 +51,15 @@ export const deliveryReducer = (state = deliveryInitialState, action) => {
       return {
         ...state,
         selectedDeliveryId: action.id
+      };
+    }
+    case SET_DELIVERY_FORM_VALUE: {
+      return {
+        ...state,
+         deliveryForm:{
+           ...state.deliveryForm,
+           [action.field]: action.value
+         }
       };
     }
     default: {

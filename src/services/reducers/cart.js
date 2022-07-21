@@ -73,7 +73,7 @@ export const cartReducer = (state = initialState, action) => {
     case TAB_SWITCH: {
       return {
         ...state,
-        currentTab: state.currentTab === 'items' ? 'postponed' : 'items'
+        currentTab: state.currentTab = action.currentName
       };
     }
     case INCREASE_ITEM: {
