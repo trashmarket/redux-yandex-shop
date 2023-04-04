@@ -10,3 +10,13 @@ body {
 p, h1, h2, h3 {
   margin: 0;
 }
+
+ymaps[class*="search__suggest"] {
+  position: relative;
+  width: inherit;
+  overflow: scroll;
+ }
+ymaps[class*="search__suggest-item"]:hover {
+  font-size: 18pt;
+  color: pink
+ }

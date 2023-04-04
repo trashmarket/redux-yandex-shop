@@ -5,7 +5,7 @@ import { Input } from '../../ui/input/input';
 import styles from './delivery.module.css';
 
 export const MapSuggestComponent = withYMaps(
-  ({ onChange, value, ymaps }) => {
+  ({ onChange, value, ymaps, ...payload }) => {
     const inputRef = useRef(null);
 
     const [_value, _setValue] = useState(value);
@@ -19,9 +19,10 @@ export const MapSuggestComponent = withYMaps(
 
     useEffect(
       () => {
-        new ymaps.SuggestView('suggest');
+       const y =  new ymaps.SuggestView('suggest');
+       console.log(y)
       },
-      [ymaps.SuggestView]
+      [ymaps.SuggestView, _value]
     );
 
     const onBlur = e => {
